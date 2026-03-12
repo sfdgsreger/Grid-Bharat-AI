@@ -64,6 +64,14 @@ class GridFailureResponse(BaseModel):
     timestamp: float
 
 
+class PredictiveActionResponse(BaseModel):
+    """Response model for predictive actions."""
+    status: str
+    message: str
+    action: str
+    timestamp: float
+
+
 class InsightsResponse(BaseModel):
     """Response model for AI insights."""
     insights: str
@@ -418,6 +426,66 @@ async def simulate_grid_failure(request: GridFailureRequest):
             status_code=500,
             detail=f"Failed to simulate grid failure: {str(e)}"
         )
+
+
+# Predictive AI Simulation Endpoints
+@app.post("/simulate/storm-warning", response_model=PredictiveActionResponse)
+async def simulate_storm_warning():
+    """
+    Simulate Scenario B: Weather predicts a storm. 
+    Pre-charges batteries to 100% and pre-fills water tanks before the grid fails.
+    """
+    try:
+        api_logger.info("Triggering Storm Warning scenario")
+        
+        # Broadcast the action to UI
+        await manager.broadcast_json({
+            "type": "predictive_action",
+            "action": "storm_warning",
+            "message": "Weather API: Severe storm predicted. Pre-charging batteries and water tanks to 100%.",
+            "timestamp": time.time()
+        })
+        
+        return PredictiveActionResponse(
+            status="success",
+            message="Storm warning activated. Batteries and tanks are pre-charging.",
+            action="storm_warning",
+            timestamp=time.time()
+        )
+    except Exception as e:
+        api_logger.error(f"Storm warning simulation failed: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/simulate/peak-load", response_model=PredictiveActionResponse)
+async def simulate_peak_load():
+    """
+    Simulate Scenario A: AI predicts peak load.
+    Reduces non-essential cooling and lighting to save power.
+    """
+    try:
+        api_logger.info("Triggering Peak Load Forecast scenario")
+        
+        # Broadcast the action to UI
+        await manager.broadcast_json({
+            "type": "predictive_action",
+            "action": "peak_load",
+            "message": "Predictive AI: High peak load expected. Proactively reducing non-essential factory/residential loads to conserve power.",
+            "timestamp": time.time()
+        })
+        
+        # We could also temporarily reduce supply here to simulate the conservation if desired
+        return PredictiveActionResponse(
+            status="success",
+            message="Peak load forecast activated. Non-essential loads are being reduced.",
+            action="peak_load",
+            timestamp=time.time()
+        )
+    except Exception as e:
+        api_logger.error(f"Peak load simulation failed: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 
 
 # AI insights endpoint

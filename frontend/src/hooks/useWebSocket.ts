@@ -13,6 +13,10 @@ export interface WebSocketData {
   allocations: AllocationResult[];
   latency: number;
   lastUpdate: number;
+  predictiveMessage?: {
+    action: string;
+    message: string;
+  } | null;
 }
 
 export interface UseWebSocketReturn {
@@ -44,6 +48,7 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
 
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const heartbeatIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const shouldReconnectRef = useRef<boolean>(true);
 
   const url = `${WS_BASE_URL}${endpoint}`;
@@ -52,6 +57,13 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
     if (reconnectTimeoutRef.current) {
       clearTimeout(reconnectTimeoutRef.current);
       reconnectTimeoutRef.current = null;
+    }
+  }, []);
+
+  const clearHeartbeat = useCallback(() => {
+    if (heartbeatIntervalRef.current) {
+      clearInterval(heartbeatIntervalRef.current);
+      heartbeatIntervalRef.current = null;
     }
   }, []);
 
@@ -69,6 +81,27 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
               ...prev,
               latency: latencyMessage.value,
             }));
+            break;
+            
+          case 'predictive_action':
+            const predictiveData = message as any;
+            setData(prev => ({
+              ...prev,
+              predictiveMessage: {
+                action: predictiveData.action,
+                message: predictiveData.message
+              }
+            }));
+            
+            // Clear message after 8 seconds
+            setTimeout(() => {
+              setData(prev => {
+                if (prev.predictiveMessage?.message === predictiveData.message) {
+                  return { ...prev, predictiveMessage: null };
+                }
+                return prev;
+              });
+            }, 8000);
             break;
             
           case 'allocation_results':
@@ -123,11 +156,20 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
       error: null,
       reconnectAttempts: 0,
     }));
+
+    // Start heartbeat
+    heartbeatIntervalRef.current = setInterval(() => {
+      if (wsRef.current?.readyState === WebSocket.OPEN) {
+        wsRef.current.send(JSON.stringify({ type: 'ping' }));
+      }
+    }, 10000); // 10 seconds
   }, []);
 
   const handleClose = useCallback((event: CloseEvent) => {
     console.log('WebSocket disconnected:', event.code, event.reason);
     
+    clearHeartbeat();
+
     setState(prev => ({
       ...prev,
       isConnected: false,
@@ -207,6 +249,7 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
   const disconnect = useCallback(() => {
     shouldReconnectRef.current = false;
     clearReconnectTimeout();
+    clearHeartbeat();
     
     if (wsRef.current) {
       wsRef.current.close(1000, 'Manual disconnect');
@@ -230,11 +273,12 @@ export const useWebSocket = (endpoint: string = WS_ENDPOINTS.ALLOCATIONS): UseWe
     return () => {
       shouldReconnectRef.current = false;
       clearReconnectTimeout();
+      clearHeartbeat();
       if (wsRef.current) {
         wsRef.current.close();
       }
     };
-  }, [connect, clearReconnectTimeout]);
+  }, [connect, clearReconnectTimeout, clearHeartbeat]);
 
   return {
     data,

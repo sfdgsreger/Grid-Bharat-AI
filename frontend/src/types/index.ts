@@ -65,8 +65,33 @@ export interface LatencyMetric {
   value: number; // in milliseconds
 }
 
+export interface AllocationResultsMessage {
+  type: 'allocation_results';
+  timestamp: number;
+  allocations: AllocationResult[];
+}
+
+export interface ConnectionEstablishedMessage {
+  type: 'connection_established';
+  timestamp: number;
+  message: string;
+}
+
+export interface SystemStateMessage {
+  type: 'system_state';
+  timestamp: number;
+  state: any;
+}
+
+export interface PredictiveActionMessage {
+  type: 'predictive_action';
+  action: string;
+  message: string;
+  timestamp: number;
+}
+
 // WebSocket message types
-export type WebSocketMessage = AllocationResult | LatencyMetric;
+export type WebSocketMessage = AllocationResult | LatencyMetric | AllocationResultsMessage | ConnectionEstablishedMessage | SystemStateMessage | PredictiveActionMessage;
 
 // Component prop types
 export interface PowerMapProps {

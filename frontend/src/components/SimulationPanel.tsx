@@ -22,6 +22,46 @@ const SimulationPanel: React.FC<SimulationPanelProps> = ({ onSimulate, isSimulat
     error: null
   });
 
+  const [predictiveState, setPredictiveState] = useState<{
+    status: 'idle' | 'running' | 'completed' | 'error';
+    action: string | null;
+    message: string | null;
+    error: string | null;
+  }>({
+    status: 'idle',
+    action: null,
+    message: null,
+    error: null
+  });
+
+  const handlePredictiveAction = async (type: 'storm' | 'peak') => {
+    if (predictiveState.status === 'running') return;
+
+    setPredictiveState({ status: 'running', action: type, message: null, error: null });
+
+    try {
+      const endpoint = type === 'storm' ? API_ENDPOINTS.SIMULATE_STORM : API_ENDPOINTS.SIMULATE_PEAK;
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+      const result = await response.json();
+      
+      setPredictiveState({ status: 'completed', action: type, message: result.message, error: null });
+      setTimeout(() => {
+        setPredictiveState(prev => prev.status === 'completed' ? { ...prev, status: 'idle', message: null } : prev);
+      }, 5000);
+    } catch (error) {
+      setPredictiveState({
+        status: 'error', action: type, message: null,
+        error: error instanceof Error ? error.message : 'Unknown error occurred'
+      });
+    }
+  };
+
   const handleSimulate = async () => {
     if (isSimulating) return;
 
@@ -177,6 +217,71 @@ const SimulationPanel: React.FC<SimulationPanelProps> = ({ onSimulate, isSimulat
           `Simulate ${failurePercentage}% Grid Failure`
         )}
       </button>
+
+      {/* Predictive AI Buttons */}
+      <div className="pt-6 border-t border-slate-700 space-y-4">
+        <h3 className="text-lg font-semibold text-white">Predictive AI & Weather Integration</h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button
+            onClick={() => handlePredictiveAction('storm')}
+            disabled={predictiveState.status === 'running'}
+            className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+              predictiveState.status === 'running' && predictiveState.action === 'storm'
+                ? 'bg-blue-800 text-blue-200 cursor-not-allowed'
+                : 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl hover:scale-[1.02]'
+            }`}
+          >
+            {predictiveState.status === 'running' && predictiveState.action === 'storm' ? (
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Processing...</span>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center">
+                <span>Predict Severe Storm</span>
+                <span className="text-xs text-blue-200 font-normal">Pre-charge Batteries & Fill Tanks</span>
+              </div>
+            )}
+          </button>
+          
+          <button
+            onClick={() => handlePredictiveAction('peak')}
+            disabled={predictiveState.status === 'running'}
+            className={`w-full py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+              predictiveState.status === 'running' && predictiveState.action === 'peak'
+                ? 'bg-purple-800 text-purple-200 cursor-not-allowed'
+                : 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl hover:scale-[1.02]'
+            }`}
+          >
+            {predictiveState.status === 'running' && predictiveState.action === 'peak' ? (
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Processing...</span>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center">
+                <span>Forecast Monday Peak Load</span>
+                <span className="text-xs text-purple-200 font-normal">Reduce Sunday Factory Cooling</span>
+              </div>
+            )}
+          </button>
+        </div>
+        
+        {/* Predictive Result Display */}
+        {predictiveState.message && (
+          <div className="bg-slate-800 rounded-lg p-4 border border-slate-700 animate-fade-in-up">
+            <h4 className="text-sm font-semibold text-emerald-400 mb-1">AI Action Executed</h4>
+            <p className="text-sm text-slate-300">{predictiveState.message}</p>
+          </div>
+        )}
+        
+        {predictiveState.error && (
+          <div className="bg-red-900/20 border border-red-700 rounded-lg p-3">
+            <p className="text-sm text-red-300">{predictiveState.error}</p>
+          </div>
+        )}
+      </div>
 
       {/* Results Display */}
       {simulationState.result && (

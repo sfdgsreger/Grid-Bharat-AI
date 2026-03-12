@@ -7,6 +7,7 @@ interface LayoutProps {
   onTabChange?: (tab: string) => void;
   isGridDown?: boolean;
   onGridToggle?: () => void;
+  wsState?: { isConnected: boolean; isConnecting: boolean; error: string | null };
 }
 
 export const Layout: React.FC<LayoutProps> = ({ 
@@ -14,7 +15,8 @@ export const Layout: React.FC<LayoutProps> = ({
   activeTab = 'dashboard', 
   onTabChange, 
   isGridDown = false, 
-  onGridToggle 
+  onGridToggle,
+  wsState
 }) => {
   const tabs = [
     { id: 'dashboard', name: 'Dashboard', icon: '📊' },
@@ -22,8 +24,8 @@ export const Layout: React.FC<LayoutProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      <header className="bg-slate-800 border-b border-slate-700">
+    <div className={`min-h-screen transition-colors duration-700 ease-in-out ${isGridDown ? 'bg-slate-950' : 'bg-slate-900'}`}>
+      <header className={`border-b transition-colors duration-700 ease-in-out ${isGridDown ? 'bg-red-950/30 border-red-900/50' : 'bg-slate-800 border-slate-700'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
@@ -35,7 +37,21 @@ export const Layout: React.FC<LayoutProps> = ({
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="text-sm text-slate-400">
+              {/* Connection Status Indicator */}
+              {wsState && (
+                <div className="flex items-center space-x-2 bg-slate-800/50 rounded-full px-3 py-1 border border-slate-700" title={wsState.error || (wsState.isConnected ? 'Connected' : wsState.isConnecting ? 'Connecting...' : 'Disconnected')}>
+                  <div className={`w-3 h-3 rounded-full ${
+                    wsState.isConnected ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' :
+                    wsState.isConnecting ? 'bg-yellow-500 animate-pulse' :
+                    'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]'
+                  }`}></div>
+                  <span className="text-xs font-medium text-slate-300 hidden sm:inline-block">
+                    {wsState.isConnected ? 'Live' : wsState.isConnecting ? 'Connecting' : 'Offline'}
+                  </span>
+                </div>
+              )}
+              
+              <div className="text-sm text-slate-400 hidden md:block">
                 Real-time Energy Distribution
               </div>
               {/* Grid Failure Simulation Button */}

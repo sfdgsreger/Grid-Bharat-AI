@@ -148,11 +148,12 @@ const DraggableLoadCard: React.FC<{
   );
 };
 
-// Priority Tier Column Component
 const PriorityTierColumn: React.FC<{
   tier: PriorityTier;
   isOver?: boolean;
-}> = ({ tier, isOver = false }) => {
+  onRemoveTier?: (id: string) => void;
+  onUpdateTierName?: (id: string, name: string) => void;
+}> = ({ tier, isOver = false, onRemoveTier, onUpdateTierName }) => {
   return (
     <div className="flex-1 min-h-0">
       <motion.div
@@ -166,10 +167,33 @@ const PriorityTierColumn: React.FC<{
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-lg font-bold text-slate-800">{tier.name}</h3>
-            <span className="bg-slate-800 text-white text-xs px-2 py-1 rounded-full">
-              {tier.items.length}
-            </span>
+            {tier.level > 3 && onUpdateTierName ? (
+              <input
+                type="text"
+                value={tier.name}
+                onChange={(e) => onUpdateTierName(tier.id, e.target.value)}
+                onPointerDown={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
+                className="text-lg font-bold text-slate-800 bg-white/50 border border-indigo-200 rounded px-2 w-[160px] focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+                placeholder="Custom Tier Name"
+              />
+            ) : (
+              <h3 className="text-lg font-bold text-slate-800">{tier.name}</h3>
+            )}
+            <div className="flex items-center space-x-2">
+              <span className="bg-slate-800 text-white text-xs px-2 py-1 rounded-full">
+                {tier.items.length}
+              </span>
+              {onRemoveTier && tier.items.length === 0 && (
+                <button 
+                  onClick={() => onRemoveTier(tier.id)}
+                  className="text-red-400 hover:text-red-600 transition-colors ml-2"
+                  title="Remove empty tier"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                </button>
+              )}
+            </div>
           </div>
           <p className="text-sm text-slate-600">{tier.description}</p>
         </div>
@@ -254,6 +278,34 @@ export const PriorityController: React.FC = () => {
     }
   };
 
+  const handleRemoveTier = (tierId: string) => {
+    setTiers(prevTiers => prevTiers.filter(t => t.id !== tierId));
+    setHasChanges(true);
+  };
+
+  const handleUpdateTierName = (tierId: string, newName: string) => {
+    setTiers(prevTiers => prevTiers.map(t => 
+      t.id === tierId ? { ...t, name: newName } : t
+    ));
+    setHasChanges(true);
+  };
+
+  const handleAddTier = () => {
+    const newLevel = tiers.length + 1;
+    const newTier: PriorityTier = {
+      id: `tier-${newLevel}-${Date.now()}`,
+      name: `Tier ${newLevel} - Custom Tier`,
+      level: newLevel,
+      description: 'Custom Priority Level',
+      bgColor: 'bg-indigo-50',
+      borderColor: 'border-indigo-200',
+      glowColor: 'shadow-indigo-100',
+      items: []
+    };
+    setTiers(prevTiers => [...prevTiers, newTier]);
+    setHasChanges(true);
+  };
+
   const findItemById = (id: string): LoadItem | null => {
     for (const tier of tiers) {
       const item = tier.items.find(item => item.id === id);
@@ -304,6 +356,12 @@ export const PriorityController: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex space-x-3">
             <button
+              onClick={handleAddTier}
+              className="px-4 py-2 text-indigo-600 bg-indigo-50 border border-indigo-200 rounded-lg hover:bg-indigo-100 transition-colors"
+            >
+              + Add Tier
+            </button>
+            <button
               onClick={handleResetConfiguration}
               className="px-4 py-2 text-slate-600 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors"
             >
@@ -341,9 +399,14 @@ export const PriorityController: React.FC = () => {
 
       {/* Drag and Drop Context */}
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className="flex space-x-6 h-[calc(100vh-280px)]">
+        <div className="flex space-x-6 h-[calc(100vh-280px)] overflow-x-auto pb-4">
           {tiers.map((tier) => (
-            <PriorityTierColumn key={tier.id} tier={tier} />
+            <PriorityTierColumn 
+              key={tier.id} 
+              tier={tier} 
+              onRemoveTier={handleRemoveTier} 
+              onUpdateTierName={handleUpdateTierName}
+            />
           ))}
         </div>
 

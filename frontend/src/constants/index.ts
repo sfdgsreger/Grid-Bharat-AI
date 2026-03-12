@@ -10,6 +10,8 @@ export const WS_ENDPOINTS = {
 // API endpoints
 export const API_ENDPOINTS = {
   SIMULATE_FAILURE: '/simulate/grid-failure',
+  SIMULATE_STORM: '/simulate/storm-warning',
+  SIMULATE_PEAK: '/simulate/peak-load',
   INSIGHTS: '/insights',
 } as const;
 

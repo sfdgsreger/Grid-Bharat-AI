@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * Dashboard Performance Monitor
  * 
@@ -33,7 +35,6 @@ class DashboardPerformanceMonitor {
   // Performance targets
   private readonly TARGET_FPS = 60;
   private readonly TARGET_FRAME_TIME = 16.67; // 1000ms / 60fps
-  private readonly WARNING_THRESHOLD = 0.8; // 80% of target
   
   // Optimization flags
   private optimizations = {
@@ -340,7 +341,6 @@ class DashboardPerformanceMonitor {
     console.log(`🧪 Running dashboard performance test for ${duration}ms`);
     
     const results: PerformanceMetrics[] = [];
-    const startTime = Date.now();
     
     // Start monitoring if not already started
     const wasMonitoring = this.isMonitoring;

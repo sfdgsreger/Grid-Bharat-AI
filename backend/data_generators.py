@@ -78,17 +78,36 @@ class EnergyNodeGenerator:
         node_configs = []
         for node_type, config in self.node_types.items():
             for i in range(nodes_per_type):
-                node_id = f"{node_type}_{i+1:03d}"
                 location = random.choice(config['locations'])
                 base_load = random.uniform(*config['base_load'])
                 
-                node_configs.append({
-                    'node_id': node_id,
-                    'type': node_type,
-                    'config': config,
-                    'location': Location(lat=location[0], lng=location[1]),
-                    'base_load': base_load
-                })
+                if node_type == 'hospital':
+                    sub_nodes = [
+                        ('icu', 1, 0.35),
+                        ('ventilators', 1, 0.15),
+                        ('hallways', 3, 0.35),
+                        ('canteen', 3, 0.15)
+                    ]
+                    for sub_name, tier, fraction in sub_nodes:
+                        sub_id = f"hospital_{i+1:03d}_{sub_name}"
+                        sub_config = dict(config)
+                        sub_config['priority_tier'] = tier
+                        node_configs.append({
+                            'node_id': sub_id,
+                            'type': f"hospital_{sub_name}",
+                            'config': sub_config,
+                            'location': Location(lat=location[0], lng=location[1]),
+                            'base_load': base_load * fraction
+                        })
+                else:
+                    node_id = f"{node_type}_{i+1:03d}"
+                    node_configs.append({
+                        'node_id': node_id,
+                        'type': node_type,
+                        'config': config,
+                        'location': Location(lat=location[0], lng=location[1]),
+                        'base_load': base_load
+                    })
         
         # Generate time series data
         total_points = int(duration_hours * 3600 / interval_seconds)
@@ -355,12 +374,22 @@ class HistoricalPatternGenerator:
         # Generate patterns for each node type
         for node_type, config in EnergyNodeGenerator(42).node_types.items():
             for node_idx in range(nodes_per_type):
-                node_id = f"{node_type}_{node_idx+1:03d}"
-                
-                # Generate multiple patterns per node
-                patterns.extend(self._generate_node_patterns(
-                    node_id, node_type, config, start_time, days_of_history
-                ))
+                if node_type == 'hospital':
+                    sub_nodes = [
+                        ('icu', 1), ('ventilators', 1), ('hallways', 3), ('canteen', 3)
+                    ]
+                    for sub_name, tier in sub_nodes:
+                        sub_id = f"hospital_{node_idx+1:03d}_{sub_name}"
+                        sub_config = dict(config)
+                        sub_config['priority_tier'] = tier
+                        patterns.extend(self._generate_node_patterns(
+                            sub_id, f"hospital_{sub_name}", sub_config, start_time, days_of_history
+                        ))
+                else:
+                    node_id = f"{node_type}_{node_idx+1:03d}"
+                    patterns.extend(self._generate_node_patterns(
+                        node_id, node_type, config, start_time, days_of_history
+                    ))
         
         return patterns
     

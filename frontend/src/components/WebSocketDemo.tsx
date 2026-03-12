@@ -25,7 +25,7 @@ export const WebSocketDemo: React.FC = () => {
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">WebSocket Connection Status</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Live Data Stream Status</h2>
         
         {/* Connection Status */}
         <div className="flex items-center justify-between mb-4">

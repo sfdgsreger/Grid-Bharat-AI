@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import type { EnergyNode, AllocationResult, PowerMapProps } from '../types';
 
 interface NodePosition {
@@ -22,24 +23,29 @@ const NodeConnection: React.FC<NodeConnectionProps> = ({
   position, 
   centerPosition 
 }) => {
-  // Determine node color based on allocation action
+  // Determine node color based on Tier logic
   const getNodeColor = () => {
-    if (!allocation) return 'bg-gray-500';
-    
-    switch (allocation.action) {
-      case 'maintain':
-        return 'bg-green-500';
-      case 'reduce':
-        return 'bg-yellow-500';
-      case 'cutoff':
-        return 'bg-red-500';
-      default:
-        return 'bg-gray-500';
+    if (node.priority_tier === 1) {
+      return 'bg-emerald-500'; // Emerald green
     }
+    if (node.priority_tier === 2) {
+      return allocation?.action === 'reduce' ? 'bg-amber-500' : 'bg-blue-500'; // Amber/Gold or solid Blue
+    }
+    if (node.priority_tier === 3) {
+      if (allocation?.action === 'cutoff') return 'bg-red-500'; // Red cutoff
+      if (!allocation || allocation.allocated_power === 0) return 'bg-slate-600'; // dimmed gray when inactive
+      return 'bg-slate-500';
+    }
+    return 'bg-gray-500';
   };
 
   // Get priority tier label
   const getPriorityLabel = () => {
+    if (node.node_id.toLowerCase().includes('icu')) return 'Hospital (ICU)';
+    if (node.node_id.toLowerCase().includes('ventilator')) return 'Hospital (Ventilators)';
+    if (node.node_id.toLowerCase().includes('hallway')) return 'Hospital (Hallways)';
+    if (node.node_id.toLowerCase().includes('canteen')) return 'Hospital (Canteen)';
+
     switch (node.priority_tier) {
       case 1:
         return 'Hospital';
@@ -57,19 +63,41 @@ const NodeConnection: React.FC<NodeConnectionProps> = ({
 
   // Get connection line color based on allocation status
   const getConnectionColor = () => {
-    if (!allocation) return 'stroke-gray-400';
+    if (!allocation) return 'text-gray-400';
     
     switch (allocation.action) {
       case 'maintain':
-        return 'stroke-green-400';
+        return 'text-emerald-400';
       case 'reduce':
-        return 'stroke-yellow-400';
+        return 'text-amber-400';
       case 'cutoff':
-        return 'stroke-red-400';
+        return 'text-red-400';
       default:
-        return 'stroke-gray-400';
+        return 'text-gray-400';
     }
   };
+
+  // Flow duration dynamic based on allocated power
+  const flowDuration = useMemo(() => {
+    if (!allocation || allocation.allocated_power === 0) return 0;
+    // Faster flow = smaller duration value
+    const power = allocation.allocated_power;
+    return Math.max(0.2, 2 - (power / 500) * 1.5);
+  }, [allocation]);
+
+  // Calculate percentage breakdown for tooltips
+  const sourceBreakdown = useMemo(() => {
+    if (!allocation || !allocation.source_mix) return '';
+    const total = Object.values(allocation.source_mix).reduce((sum, val) => sum + (val as number || 0), 0);
+    if (total === 0) return '';
+    
+    return Object.entries(allocation.source_mix)
+      .map(([source, amount]) => {
+        const percentage = Math.round(((amount as number) / total) * 100);
+        return `${source.charAt(0).toUpperCase() + source.slice(1)}: ${percentage}%`;
+      })
+      .join(', ');
+  }, [allocation]);
 
   return (
     <>
@@ -80,10 +108,30 @@ const NodeConnection: React.FC<NodeConnectionProps> = ({
       >
         <path
           d={connectionPath}
-          className={`${getConnectionColor()} opacity-60`}
+          stroke="currentColor"
+          fill="none"
+          className={`${getConnectionColor()} opacity-30`}
           strokeWidth="2"
           strokeDasharray={allocation?.action === 'cutoff' ? '5,5' : 'none'}
         />
+        {/* Animated Flow Dashing Lines */}
+        {flowDuration > 0 && allocation?.action !== 'cutoff' && (
+          <motion.path
+            d={connectionPath}
+            stroke="currentColor"
+            fill="none"
+            className={`${getConnectionColor()} opacity-80`}
+            strokeWidth="3"
+            strokeDasharray="10 15"
+            initial={{ strokeDashoffset: 100 }}
+            animate={{ strokeDashoffset: 0 }}
+            transition={{
+              duration: flowDuration,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        )}
       </svg>
 
       {/* Node */}
@@ -95,47 +143,82 @@ const NodeConnection: React.FC<NodeConnectionProps> = ({
           zIndex: 2
         }}
       >
+        {/* Floating kW label */}
+        {allocation && allocation.allocated_power > 0 && (
+          <div className="absolute -top-7 left-1/2 transform -translate-x-1/2 whitespace-nowrap z-10 hidden md:block">
+            <span className="bg-slate-800 border border-slate-600 px-1.5 py-0.5 rounded text-[10px] font-bold text-white shadow-sm shadow-black/50">
+              {Math.round(allocation.allocated_power)} kW
+            </span>
+          </div>
+        )}
+
         {/* Node circle */}
-        <div
-          className={`
-            w-12 h-12 rounded-full ${getNodeColor()} 
-            border-2 border-white shadow-lg
-            transition-all duration-300 ease-in-out
-            group-hover:scale-110 group-hover:shadow-xl
-            ${allocation?.action === 'cutoff' ? 'animate-pulse' : ''}
-          `}
-        >
-          {/* Priority tier indicator */}
-          <div className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center text-xs font-bold text-gray-800">
-            {node.priority_tier}
+        <div className="relative">
+          {/* Heartbeat pulse effect for Tier 1 */}
+          {node.priority_tier === 1 && (
+            <div className={`absolute inset-0 rounded-full animate-ping opacity-75 ${getNodeColor()}`} />
+          )}
+
+          <div
+            className={`
+              relative w-12 h-12 rounded-full ${getNodeColor()} 
+              border-2 border-white shadow-lg
+              transition-all duration-300 ease-in-out
+              group-hover:scale-110 group-hover:shadow-xl
+              flex items-center justify-center
+              ${node.priority_tier === 3 && allocation?.action === 'cutoff' ? 'opacity-90 grayscale' : ''}
+            `}
+          >
+            {/* Priority tier indicator */}
+            <div className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center text-xs font-bold text-gray-800">
+              {node.priority_tier}
+            </div>
           </div>
         </div>
 
+        {/* Node Name Label */}
+        <div className="absolute top-14 left-1/2 transform -translate-x-1/2 whitespace-nowrap text-[11px] font-semibold text-slate-300 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/50 shadow-sm pointer-events-none">
+          {node.node_id.split('_').map((word, i, arr) => {
+            if (i === arr.length - 1 && ['icu', 'ventilators', 'hallways', 'canteen'].includes(word.toLowerCase())) {
+              return `[${word.toUpperCase()}]`;
+            }
+            return word.charAt(0).toUpperCase() + word.slice(1);
+          }).join(' ')}
+        </div>
+
         {/* Tooltip */}
-        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-          <div className="bg-gray-900 text-white text-xs rounded-lg px-3 py-2 shadow-lg min-w-max">
-            <div className="font-semibold">{getPriorityLabel()}</div>
-            <div className="text-gray-300">ID: {node.node_id}</div>
-            <div className="text-gray-300">Load: {node.current_load}kW</div>
-            <div className="text-gray-300">Source: {node.source_type}</div>
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
+          <div className="bg-gray-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 shadow-xl min-w-max">
+            <div className="font-semibold text-emerald-100">{getPriorityLabel()}</div>
+            <div className="text-gray-300 mt-0.5">ID: {node.node_id}</div>
+            <div className="text-gray-300">Load: {Math.round(node.current_load)}kW</div>
+            
             {allocation && (
               <>
                 <div className="border-t border-gray-700 mt-1 pt-1">
-                  <div className="text-gray-300">
-                    Allocated: {allocation.allocated_power}kW
+                  <div className="text-gray-200">
+                    Allocated: <span className="font-bold">{Math.round(allocation.allocated_power)}kW</span>
                   </div>
-                  <div className={`font-semibold ${
+                  {sourceBreakdown && (
+                    <div className="text-[10px] font-medium text-emerald-400 mt-1">
+                      Mix: {sourceBreakdown}
+                    </div>
+                  )}
+                  <div className={`font-bold mt-1 ${
                     allocation.action === 'maintain' ? 'text-green-400' :
-                    allocation.action === 'reduce' ? 'text-yellow-400' :
+                    allocation.action === 'reduce' ? 'text-amber-400' :
                     'text-red-400'
                   }`}>
                     Action: {allocation.action.toUpperCase()}
                   </div>
-                  <div className="text-gray-300 text-xs">
-                    Latency: {allocation.latency_ms}ms
+                  <div className="text-gray-500 text-[10px] mt-0.5 font-mono">
+                    Latency: {allocation.latency_ms.toFixed(1)}ms
                   </div>
                 </div>
               </>
+            )}
+            {!allocation && (
+              <div className="text-gray-400 text-xs italic mt-1 pt-1 border-t border-gray-700">No active allocation</div>
             )}
           </div>
         </div>
