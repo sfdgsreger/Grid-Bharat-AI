@@ -1,0 +1,30 @@
+{
+  "generation_timestamp": 1773292006.107306,
+  "total_scenarios": 20,
+  "total_supply_events": 1935,
+  "total_node_responses": 1080,
+  "scenario_types": {
+    "natural_disaster": 4,
+    "renewable_intermittency": 4,
+    "grid_blackout": 3,
+    "cyber_attack": 4,
+    "equipment_failure": 3,
+    "fuel_shortage": 2
+  },
+  "severity_distribution": {
+    "1": 4,
+    "2": 2,
+    "3": 4,
+    "4": 6,
+    "5": 4
+  },
+  "average_supply_reduction_percent": 41.877467746706955,
+  "scenario_templates": [
+    "grid_blackout",
+    "renewable_intermittency",
+    "equipment_failure",
+    "fuel_shortage",
+    "cyber_attack",
+    "natural_disaster"
+  ]
+}

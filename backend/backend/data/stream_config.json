@@ -1,0 +1,41 @@
+{
+  "streams": {
+    "nodes_csv": {
+      "name": "nodes_csv",
+      "output_format": "csv",
+      "output_path": "backend/data/streams/nodes_stream.csv",
+      "update_interval_seconds": 30,
+      "rotation_interval_minutes": 60,
+      "variation_factor": 0.3,
+      "enable_failures": true,
+      "failure_probability": 0.02,
+      "max_file_size_mb": 10,
+      "keep_history_files": 24
+    },
+    "nodes_jsonl": {
+      "name": "nodes_jsonl",
+      "output_format": "jsonl",
+      "output_path": "backend/data/streams/nodes_stream.jsonl",
+      "update_interval_seconds": 15,
+      "rotation_interval_minutes": 30,
+      "variation_factor": 0.2,
+      "enable_failures": true,
+      "failure_probability": 0.02,
+      "max_file_size_mb": 5,
+      "keep_history_files": 48
+    },
+    "supply_events": {
+      "name": "supply_events",
+      "output_format": "jsonl",
+      "output_path": "backend/data/streams/supply_events.jsonl",
+      "update_interval_seconds": 60,
+      "rotation_interval_minutes": 120,
+      "variation_factor": 0.4,
+      "enable_failures": true,
+      "failure_probability": 0.03,
+      "max_file_size_mb": 5,
+      "keep_history_files": 12
+    }
+  },
+  "failure_scenarios": {}
+}

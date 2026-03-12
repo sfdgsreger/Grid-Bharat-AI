@@ -1,0 +1,246 @@
+[
+  {
+    "event_id": "failure_0000_natural_disaster",
+    "scenario_type": "natural_disaster",
+    "severity_level": 1,
+    "duration_minutes": 526.5369411450903,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Natural Disaster Impact (Severity 1): Earthquake, flood, or severe weather affecting infrastructure",
+    "supply_reduction_percent": 25.000000000000007
+  },
+  {
+    "event_id": "failure_0001_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 5,
+    "duration_minutes": 675.458293541734,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 5): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 16.47368150935054
+  },
+  {
+    "event_id": "failure_0002_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 3,
+    "duration_minutes": 156.1381826235245,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 3): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 0.8896907863834597
+  },
+  {
+    "event_id": "failure_0003_cyber_attack",
+    "scenario_type": "cyber_attack",
+    "severity_level": 1,
+    "duration_minutes": 354.96886153203775,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Cyber Security Attack (Severity 1): Cyber attack on grid control systems",
+    "supply_reduction_percent": 19.999667517268314
+  },
+  {
+    "event_id": "failure_0004_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 2,
+    "duration_minutes": 688.2781021464738,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 2): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 8.878896911922801
+  },
+  {
+    "event_id": "failure_0005_cyber_attack",
+    "scenario_type": "cyber_attack",
+    "severity_level": 3,
+    "duration_minutes": 133.62724658766143,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Cyber Security Attack (Severity 3): Cyber attack on grid control systems",
+    "supply_reduction_percent": 50.00027146766276
+  },
+  {
+    "event_id": "failure_0006_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 4,
+    "duration_minutes": 345.8761131042792,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 4): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 1.1386332587672496e-14
+  },
+  {
+    "event_id": "failure_0007_cyber_attack",
+    "scenario_type": "cyber_attack",
+    "severity_level": 4,
+    "duration_minutes": 118.03449743459426,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Cyber Security Attack (Severity 4): Cyber attack on grid control systems",
+    "supply_reduction_percent": 70.0
+  },
+  {
+    "event_id": "failure_0008_equipment_failure",
+    "scenario_type": "equipment_failure",
+    "severity_level": 1,
+    "duration_minutes": 438.81522388847395,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery"
+    ],
+    "impact_description": "Critical Equipment Failure (Severity 1): Failure of transformers, generators, or distribution equipment",
+    "supply_reduction_percent": 11.564697449484187
+  },
+  {
+    "event_id": "failure_0009_grid_blackout",
+    "scenario_type": "grid_blackout",
+    "severity_level": 4,
+    "duration_minutes": 203.01843448746388,
+    "affected_sources": [
+      "grid"
+    ],
+    "impact_description": "Complete Grid Blackout (Severity 4): Total loss of grid power supply",
+    "supply_reduction_percent": 56.37708041666456
+  },
+  {
+    "event_id": "failure_0010_grid_blackout",
+    "scenario_type": "grid_blackout",
+    "severity_level": 5,
+    "duration_minutes": 54.72425937182025,
+    "affected_sources": [
+      "grid"
+    ],
+    "impact_description": "Complete Grid Blackout (Severity 5): Total loss of grid power supply",
+    "supply_reduction_percent": 44.736129334915766
+  },
+  {
+    "event_id": "failure_0011_renewable_intermittency",
+    "scenario_type": "renewable_intermittency",
+    "severity_level": 4,
+    "duration_minutes": 48.920628717016015,
+    "affected_sources": [
+      "solar"
+    ],
+    "impact_description": "Renewable Energy Intermittency (Severity 4): Sudden drop in solar/wind power generation",
+    "supply_reduction_percent": 20.64259862720598
+  },
+  {
+    "event_id": "failure_0012_renewable_intermittency",
+    "scenario_type": "renewable_intermittency",
+    "severity_level": 1,
+    "duration_minutes": 29.329064074716186,
+    "affected_sources": [
+      "solar"
+    ],
+    "impact_description": "Renewable Energy Intermittency (Severity 1): Sudden drop in solar/wind power generation",
+    "supply_reduction_percent": 4.2839286826011875
+  },
+  {
+    "event_id": "failure_0013_equipment_failure",
+    "scenario_type": "equipment_failure",
+    "severity_level": 4,
+    "duration_minutes": 111.22385359802371,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery"
+    ],
+    "impact_description": "Critical Equipment Failure (Severity 4): Failure of transformers, generators, or distribution equipment",
+    "supply_reduction_percent": 54.55577897107863
+  },
+  {
+    "event_id": "failure_0014_equipment_failure",
+    "scenario_type": "equipment_failure",
+    "severity_level": 2,
+    "duration_minutes": 436.81363228705203,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery"
+    ],
+    "impact_description": "Critical Equipment Failure (Severity 2): Failure of transformers, generators, or distribution equipment",
+    "supply_reduction_percent": 25.000000000000007
+  },
+  {
+    "event_id": "failure_0015_cyber_attack",
+    "scenario_type": "cyber_attack",
+    "severity_level": 2,
+    "duration_minutes": 335.94558188537997,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Cyber Security Attack (Severity 2): Cyber attack on grid control systems",
+    "supply_reduction_percent": 35.0
+  },
+  {
+    "event_id": "failure_0016_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 5,
+    "duration_minutes": 635.0134039189991,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 5): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 22.793406306279476
+  },
+  {
+    "event_id": "failure_0017_natural_disaster",
+    "scenario_type": "natural_disaster",
+    "severity_level": 1,
+    "duration_minutes": 602.9752919603778,
+    "affected_sources": [
+      "grid",
+      "solar",
+      "battery",
+      "diesel"
+    ],
+    "impact_description": "Natural Disaster Impact (Severity 1): Earthquake, flood, or severe weather affecting infrastructure",
+    "supply_reduction_percent": 24.999999999999982
+  },
+  {
+    "event_id": "failure_0018_renewable_intermittency",
+    "scenario_type": "renewable_intermittency",
+    "severity_level": 5,
+    "duration_minutes": 45.48900105542768,
+    "affected_sources": [
+      "solar"
+    ],
+    "impact_description": "Renewable Energy Intermittency (Severity 5): Sudden drop in solar/wind power generation",
+    "supply_reduction_percent": 11.296283886531993
+  },
+  {
+    "event_id": "failure_0019_fuel_shortage",
+    "scenario_type": "fuel_shortage",
+    "severity_level": 3,
+    "duration_minutes": 580.0445403654701,
+    "affected_sources": [
+      "diesel"
+    ],
+    "impact_description": "Diesel Fuel Shortage (Severity 3): Shortage of diesel fuel for backup generators",
+    "supply_reduction_percent": 13.169920163806934
+  }
+]

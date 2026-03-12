@@ -1,0 +1,82 @@
+[
+  {
+    "pattern_id": "sample_pattern_1",
+    "timestamp": 1772615577.2677438,
+    "node_id": "hospital_001",
+    "consumption_data": {
+      "current_load": 150.0,
+      "peak_load": 200.0,
+      "avg_load": 140.0
+    },
+    "context": "Hospital during normal operations",
+    "metadata": {
+      "priority_tier": 1,
+      "source_type": "Grid",
+      "status": "active"
+    }
+  },
+  {
+    "pattern_id": "sample_pattern_2",
+    "timestamp": 1772619177.2677438,
+    "node_id": "hospital_001",
+    "consumption_data": {
+      "current_load": 220.0,
+      "peak_load": 250.0,
+      "avg_load": 200.0
+    },
+    "context": "Hospital during emergency surge",
+    "metadata": {
+      "priority_tier": 1,
+      "source_type": "Grid",
+      "status": "active"
+    }
+  },
+  {
+    "pattern_id": "sample_pattern_3",
+    "timestamp": 1772622777.2677438,
+    "node_id": "factory_001",
+    "consumption_data": {
+      "current_load": 300.0,
+      "peak_load": 350.0,
+      "avg_load": 280.0
+    },
+    "context": "Factory during peak production hours",
+    "metadata": {
+      "priority_tier": 2,
+      "source_type": "Grid",
+      "status": "active"
+    }
+  },
+  {
+    "pattern_id": "sample_pattern_4",
+    "timestamp": 1772626377.2677438,
+    "node_id": "factory_001",
+    "consumption_data": {
+      "current_load": 50.0,
+      "peak_load": 80.0,
+      "avg_load": 45.0
+    },
+    "context": "Factory during maintenance shutdown",
+    "metadata": {
+      "priority_tier": 2,
+      "source_type": "Grid",
+      "status": "degraded"
+    }
+  },
+  {
+    "pattern_id": "sample_pattern_5",
+    "timestamp": 1772629977.2677438,
+    "node_id": "residential_001",
+    "consumption_data": {
+      "current_load": 80.0,
+      "peak_load": 100.0,
+      "avg_load": 75.0
+    },
+    "context": "Residential area during evening peak",
+    "metadata": {
+      "priority_tier": 3,
+      "source_type": "Grid",
+      "status": "active"
+    }
+  }
+]

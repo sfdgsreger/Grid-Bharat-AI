@@ -1,0 +1,64 @@
+version: '3.8'
+
+# Development overrides for docker-compose.yml
+services:
+  # Backend development configuration
+  backend:
+    build:
+      target: development
+    environment:
+      - PYTHONPATH=/app
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - LOG_LEVEL=DEBUG
+      - RELOAD=true
+    volumes:
+      - ./backend:/app
+      - ./data:/app/data
+      - backend_dev_cache:/app/.cache
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload --log-level debug
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+
+  # Frontend development configuration
+  frontend:
+    build:
+      target: development
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:8000
+      - VITE_WS_URL=ws://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - frontend_dev_cache:/app/.vite
+    command: npm run dev -- --host 0.0.0.0
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.3'
+
+  # ChromaDB with development settings
+  chromadb:
+    environment:
+      - CHROMA_SERVER_HOST=0.0.0.0
+      - CHROMA_SERVER_HTTP_PORT=8000
+      - CHROMA_SERVER_CORS_ALLOW_ORIGINS=["*"]
+      - CHROMA_LOG_LEVEL=DEBUG
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.3'
+
+# Additional volumes for development
+volumes:
+  backend_dev_cache:
+    driver: local
+  frontend_dev_cache:
+    driver: local

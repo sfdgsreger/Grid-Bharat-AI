@@ -1,0 +1,26 @@
+{
+  "generation_timestamp": 1773246549.6552696,
+  "duration_hours": 2,
+  "history_days": 7,
+  "nodes_per_type": 3,
+  "total_nodes": 1080,
+  "total_supply_events": 24,
+  "total_historical_patterns": 164,
+  "node_types": [
+    "hospital",
+    "factory",
+    "residential"
+  ],
+  "supply_scenarios": [
+    "normal",
+    "peak_demand",
+    "grid_failure",
+    "renewable_peak"
+  ],
+  "pattern_types": [
+    "normal_operation",
+    "emergency_surge",
+    "maintenance_mode",
+    "peak_efficiency"
+  ]
+}

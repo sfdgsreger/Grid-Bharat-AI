@@ -1,0 +1,68 @@
+BHARAT-GRID AI COMPREHENSIVE PERFORMANCE VALIDATION REPORT
+======================================================================
+
+EXECUTIVE SUMMARY
+--------------------
+Tests Passed: 3/4
+Overall Status: FAIL
+
+DETAILED RESULTS
+--------------------
+
+ALLOCATION PERFORMANCE
+----------------------
+Target: 10.0ms
+Measured: 2.69ms
+Status: FAIL
+Details:
+  p95_latency_ms: 26.59
+  violation_rate: 10.00
+  total_tests: 20
+  node_counts_tested: [100, 500, 1000, 2000]
+
+WEBSOCKET PERFORMANCE
+---------------------
+Target: 50.0ms
+Measured: 5.16ms
+Status: PASS
+Details:
+  p95_latency_ms: 10.57
+  violation_rate: 0.00
+  total_tests: 40
+  connection_counts_tested: [10, 25, 50, 100]
+
+RAG PERFORMANCE
+---------------
+Target: 2000.0ms
+Measured: 709.58ms
+Status: PASS
+Details:
+  p95_latency_ms: 1421.97
+  violation_rate: 0.00
+  total_tests: 15
+  query_complexities_tested: ['simple', 'medium', 'complex']
+
+DASHBOARD PERFORMANCE
+---------------------
+Target: 16.67ms
+Measured: 7.91ms
+Status: PASS
+Details:
+  fps: 126.43
+  slow_frame_rate: 0.00
+  total_frames: 240
+  update_frequencies_tested: [10, 30, 60, 100]
+
+PERFORMANCE TARGETS COMPLIANCE
+-----------------------------------
+✗ Allocation Latency: < 10ms - NON-COMPLIANT
+✓ WebSocket Latency: < 50ms - COMPLIANT
+✓ RAG Response Time: < 2s - COMPLIANT
+✓ Dashboard Frame Rate: 60 FPS - COMPLIANT
+
+RECOMMENDATIONS
+---------------
+• Consider further algorithm optimization for large node counts
+• Implement more aggressive caching strategies
+
+Report generated: 2026-03-11 22:53:40

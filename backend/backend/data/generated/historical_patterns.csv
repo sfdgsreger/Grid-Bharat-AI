@@ -1,0 +1,165 @@
+pattern_id,timestamp,node_id,context,current_load,peak_load,avg_load,duration_hours,node_type,pattern_type,priority_tier,weather_condition
+hospital_001_pattern_0000,1772687205.732563,hospital_001,Normal operational pattern for hospital during morning hours,152.2,212.26,142.36,6.2,hospital,normal_operation,1,mild
+hospital_001_pattern_0001,1772712422.0062232,hospital_001,Normal operational pattern for hospital during evening peak,151.89,197.78,122.32,4.24,hospital,normal_operation,1,clear
+hospital_001_pattern_0002,1772737668.710059,hospital_001,Normal operational pattern for hospital during night hours,177.27,252.39,142.04,5.76,hospital,normal_operation,1,mild
+hospital_001_pattern_0003,1772769013.9563506,hospital_001,Normal operational pattern for hospital during morning hours,202.46,249.96,165.72,5.24,hospital,normal_operation,1,clear
+hospital_001_pattern_0004,1772800370.194961,hospital_001,Emergency or surge demand pattern for hospital during evening peak,381.63,501.65,379.58,5.04,hospital,emergency_surge,1,cloudy
+hospital_001_pattern_0005,1772827254.2158341,hospital_001,Reduced load during maintenance for hospital during night hours,61.36,81.67,57.74,5.71,hospital,maintenance_mode,1,clear
+hospital_001_pattern_0006,1772852485.7607584,hospital_001,Normal operational pattern for hospital during morning hours,152.86,174.32,130.79,4.64,hospital,normal_operation,1,hot
+hospital_001_pattern_0007,1772875580.655149,hospital_001,Normal operational pattern for hospital during afternoon period,155.2,228.87,144.28,5.68,hospital,normal_operation,1,hot
+hospital_001_pattern_0008,1772899970.8046024,hospital_001,Reduced load during maintenance for hospital during evening peak,36.6,54.75,33.96,2.98,hospital,maintenance_mode,1,hot
+hospital_001_pattern_0009,1772921126.43803,hospital_001,Reduced load during maintenance for hospital during night hours,28.88,32.13,24.92,6.66,hospital,maintenance_mode,1,clear
+hospital_001_pattern_0010,1772949546.4199486,hospital_001,Optimized high-efficiency operation for hospital during morning hours,204.43,278.47,179.72,14.76,hospital,peak_efficiency,1,mild
+hospital_001_pattern_0011,1773010277.1878443,hospital_001,Normal operational pattern for hospital during night hours,175.36,211.32,160.79,5.97,hospital,normal_operation,1,mild
+hospital_001_pattern_0012,1773038612.5064306,hospital_001,Normal operational pattern for hospital during afternoon period,171.81,195.23,139.06,11.98,hospital,normal_operation,1,clear
+hospital_001_pattern_0013,1773091447.409623,hospital_001,Reduced load during maintenance for hospital during night hours,20.38,25.53,20.36,4.53,hospital,maintenance_mode,1,cloudy
+hospital_001_pattern_0014,1773121801.652464,hospital_001,Optimized high-efficiency operation for hospital during morning hours,225.28,309.23,204.41,6.11,hospital,peak_efficiency,1,clear
+hospital_001_pattern_0015,1773153691.087916,hospital_001,Normal operational pattern for hospital during evening peak,167.99,248.88,163.81,7.48,hospital,normal_operation,1,clear
+hospital_001_pattern_0016,1773188719.7121596,hospital_001,Normal operational pattern for hospital during night hours,196.52,239.63,182.33,11.3,hospital,normal_operation,1,hot
+hospital_001_pattern_0017,1773233129.1687164,hospital_001,Reduced load during maintenance for hospital during evening peak,57.09,74.92,45.68,5.24,hospital,maintenance_mode,1,cloudy
+hospital_001_pattern_0018,1773254025.1627212,hospital_001,Optimized high-efficiency operation for hospital during night hours,230.97,282.48,187.45,14.79,hospital,peak_efficiency,1,mild
+hospital_002_pattern_0000,1772687205.732563,hospital_002,Normal operational pattern for hospital during morning hours,140.08,196.99,115.66,4.55,hospital,normal_operation,1,cloudy
+hospital_002_pattern_0001,1772712326.578373,hospital_002,Normal operational pattern for hospital during evening peak,122.95,145.66,111.62,10.98,hospital,normal_operation,1,hot
+hospital_002_pattern_0002,1772756187.153355,hospital_002,Normal operational pattern for hospital during night hours,134.46,171.47,121.48,11.96,hospital,normal_operation,1,clear
+hospital_002_pattern_0003,1772803878.6412735,hospital_002,Normal operational pattern for hospital during evening peak,113.16,134.44,92.13,8.71,hospital,normal_operation,1,hot
+hospital_002_pattern_0004,1772839906.5988412,hospital_002,Optimized high-efficiency operation for hospital during night hours,142.23,170.0,132.82,14.6,hospital,peak_efficiency,1,clear
+hospital_002_pattern_0005,1772895920.6025443,hospital_002,Optimized high-efficiency operation for hospital during evening peak,157.53,222.72,151.46,11.71,hospital,peak_efficiency,1,clear
+hospital_002_pattern_0006,1772941099.4821632,hospital_002,Normal operational pattern for hospital during morning hours,125.18,174.2,117.0,7.39,hospital,normal_operation,1,stormy
+hospital_002_pattern_0007,1772970738.6116827,hospital_002,Normal operational pattern for hospital during evening peak,145.2,174.17,121.69,6.71,hospital,normal_operation,1,cloudy
+hospital_002_pattern_0008,1773002026.23538,hospital_002,Normal operational pattern for hospital during night hours,148.33,189.45,144.22,6.0,hospital,normal_operation,1,hot
+hospital_002_pattern_0009,1773026058.0740309,hospital_002,Optimized high-efficiency operation for hospital during morning hours,176.41,259.42,171.07,14.36,hospital,peak_efficiency,1,clear
+hospital_002_pattern_0010,1773085674.1452746,hospital_002,Normal operational pattern for hospital during night hours,104.46,130.74,104.15,7.21,hospital,normal_operation,1,clear
+hospital_002_pattern_0011,1773123303.3952847,hospital_002,Normal operational pattern for hospital during morning hours,150.06,224.81,136.72,7.38,hospital,normal_operation,1,hot
+hospital_002_pattern_0012,1773153636.4508796,hospital_002,Normal operational pattern for hospital during evening peak,130.87,172.34,124.27,11.75,hospital,normal_operation,1,clear
+hospital_002_pattern_0013,1773205095.9182808,hospital_002,Normal operational pattern for hospital during morning hours,109.47,162.49,89.33,10.82,hospital,normal_operation,1,clear
+hospital_002_pattern_0014,1773253351.6935132,hospital_002,Emergency or surge demand pattern for hospital during night hours,205.49,299.21,174.51,2.18,hospital,emergency_surge,1,hot
+hospital_002_pattern_0015,1773270789.5706534,hospital_002,Normal operational pattern for hospital during night hours,128.01,188.67,107.64,8.67,hospital,normal_operation,1,hot
+hospital_003_pattern_0000,1772687205.732563,hospital_003,Emergency or surge demand pattern for hospital during morning hours,275.45,385.83,224.35,2.5,hospital,emergency_surge,1,cloudy
+hospital_003_pattern_0001,1772710586.205954,hospital_003,Optimized high-efficiency operation for hospital during evening peak,176.53,212.91,174.17,6.73,hospital,peak_efficiency,1,mild
+hospital_003_pattern_0002,1772747702.396969,hospital_003,Normal operational pattern for hospital during night hours,171.91,237.48,158.56,5.26,hospital,normal_operation,1,stormy
+hospital_003_pattern_0003,1772776685.6073442,hospital_003,Normal operational pattern for hospital during morning hours,139.49,190.46,137.79,10.54,hospital,normal_operation,1,clear
+hospital_003_pattern_0004,1772817872.6076827,hospital_003,Normal operational pattern for hospital during night hours,137.85,184.99,130.07,8.43,hospital,normal_operation,1,clear
+hospital_003_pattern_0005,1772857996.8468223,hospital_003,Normal operational pattern for hospital during morning hours,176.25,253.53,144.26,7.91,hospital,normal_operation,1,cloudy
+hospital_003_pattern_0006,1772891752.7349863,hospital_003,Normal operational pattern for hospital during evening peak,159.98,192.74,151.7,10.17,hospital,normal_operation,1,hot
+hospital_003_pattern_0007,1772935549.8237884,hospital_003,Normal operational pattern for hospital during morning hours,174.9,255.63,159.01,4.6,hospital,normal_operation,1,mild
+hospital_003_pattern_0008,1772961256.4674964,hospital_003,Normal operational pattern for hospital during afternoon period,140.03,204.39,134.32,5.02,hospital,normal_operation,1,mild
+hospital_003_pattern_0009,1772992453.348872,hospital_003,Normal operational pattern for hospital during night hours,127.57,180.13,124.61,6.0,hospital,normal_operation,1,cloudy
+hospital_003_pattern_0010,1773023660.1403894,hospital_003,Normal operational pattern for hospital during morning hours,173.78,259.02,167.2,11.44,hospital,normal_operation,1,mild
+hospital_003_pattern_0011,1773066953.0218012,hospital_003,Reduced load during maintenance for hospital during evening peak,57.52,81.73,55.95,3.99,hospital,maintenance_mode,1,mild
+hospital_003_pattern_0012,1773086489.9798498,hospital_003,Reduced load during maintenance for hospital during night hours,54.85,79.17,46.32,2.65,hospital,maintenance_mode,1,mild
+hospital_003_pattern_0013,1773103624.666137,hospital_003,Normal operational pattern for hospital during morning hours,135.14,149.93,113.33,10.36,hospital,normal_operation,1,cloudy
+hospital_003_pattern_0014,1773153621.463582,hospital_003,Optimized high-efficiency operation for hospital during evening peak,196.02,246.95,195.28,8.79,hospital,peak_efficiency,1,cloudy
+hospital_003_pattern_0015,1773198904.351288,hospital_003,Normal operational pattern for hospital during morning hours,132.16,196.26,112.75,11.76,hospital,normal_operation,1,clear
+hospital_003_pattern_0016,1773248527.3922434,hospital_003,Reduced load during maintenance for hospital during night hours,42.75,55.77,37.49,3.88,hospital,maintenance_mode,1,hot
+hospital_003_pattern_0017,1773267512.3258073,hospital_003,Reduced load during maintenance for hospital during night hours,57.28,75.34,54.06,2.01,hospital,maintenance_mode,1,hot
+hospital_003_pattern_0018,1773284998.7765727,hospital_003,Normal operational pattern for hospital during morning hours,161.63,199.14,139.45,4.56,hospital,normal_operation,1,mild
+factory_001_pattern_0000,1772687205.732563,factory_001,Normal operational pattern for factory during morning hours,249.91,304.46,206.29,7.27,factory,normal_operation,2,cloudy
+factory_001_pattern_0001,1772727016.0305827,factory_001,Emergency or surge demand pattern for factory during evening peak,550.17,671.42,500.43,5.51,factory,emergency_surge,2,clear
+factory_001_pattern_0002,1772752281.6432383,factory_001,Normal operational pattern for factory during night hours,276.16,355.14,245.35,8.64,factory,normal_operation,2,clear
+factory_001_pattern_0003,1772791147.3508792,factory_001,Optimized high-efficiency operation for factory during afternoon period,299.31,339.39,270.3,13.96,factory,peak_efficiency,2,hot
+factory_001_pattern_0004,1772847427.6142619,factory_001,Reduced load during maintenance for factory during morning hours,78.5,93.4,65.92,6.51,factory,maintenance_mode,2,clear
+factory_001_pattern_0005,1772875737.2140882,factory_001,Normal operational pattern for factory during afternoon period,215.63,272.94,199.66,10.8,factory,normal_operation,2,clear
+factory_001_pattern_0006,1772925183.7232497,factory_001,Normal operational pattern for factory during night hours,276.3,304.54,262.54,5.95,factory,normal_operation,2,mild
+factory_001_pattern_0007,1772949753.4750464,factory_001,Normal operational pattern for factory during morning hours,307.7,402.23,249.25,5.41,factory,normal_operation,2,clear
+factory_001_pattern_0008,1772981708.0494564,factory_001,Normal operational pattern for factory during evening peak,277.5,414.9,255.04,10.41,factory,normal_operation,2,stormy
+factory_001_pattern_0009,1773032220.8142512,factory_001,Emergency or surge demand pattern for factory during morning hours,521.37,746.72,474.23,4.6,factory,emergency_surge,2,mild
+factory_001_pattern_0010,1773059937.8041253,factory_001,Normal operational pattern for factory during evening peak,233.77,316.77,222.82,6.07,factory,normal_operation,2,cloudy
+factory_001_pattern_0011,1773091499.551027,factory_001,Normal operational pattern for factory during night hours,237.77,287.39,205.42,4.62,factory,normal_operation,2,cloudy
+factory_001_pattern_0012,1773111674.5847933,factory_001,Normal operational pattern for factory during morning hours,281.54,316.92,248.18,9.55,factory,normal_operation,2,cloudy
+factory_001_pattern_0013,1773153099.0947373,factory_001,Normal operational pattern for factory during evening peak,302.18,402.99,283.78,7.36,factory,normal_operation,2,mild
+factory_001_pattern_0014,1773191045.7197084,factory_001,Normal operational pattern for factory during morning hours,244.64,342.84,237.47,4.05,factory,normal_operation,2,stormy
+factory_001_pattern_0015,1773212695.1950767,factory_001,Reduced load during maintenance for factory during afternoon period,73.07,86.83,61.66,5.28,factory,maintenance_mode,2,cloudy
+factory_001_pattern_0016,1773233857.3656983,factory_001,Normal operational pattern for factory during evening peak,250.11,291.63,223.47,9.43,factory,normal_operation,2,clear
+factory_001_pattern_0017,1773277457.0896955,factory_001,Normal operational pattern for factory during morning hours,266.76,296.33,247.7,7.15,factory,normal_operation,2,clear
+factory_002_pattern_0000,1772687205.732563,factory_002,Normal operational pattern for factory during morning hours,195.51,274.59,171.23,5.69,factory,normal_operation,2,mild
+factory_002_pattern_0001,1772719983.7947412,factory_002,Normal operational pattern for factory during evening peak,169.67,223.25,169.67,4.66,factory,normal_operation,2,cloudy
+factory_002_pattern_0002,1772746734.5098195,factory_002,Reduced load during maintenance for factory during night hours,68.54,101.42,57.56,5.91,factory,maintenance_mode,2,clear
+factory_002_pattern_0003,1772771732.4279296,factory_002,Normal operational pattern for factory during morning hours,215.43,255.76,202.48,9.36,factory,normal_operation,2,mild
+factory_002_pattern_0004,1772809326.985861,factory_002,Emergency or surge demand pattern for factory during evening peak,339.14,484.2,336.75,4.74,factory,emergency_surge,2,clear
+factory_002_pattern_0005,1772828513.1957576,factory_002,Normal operational pattern for factory during night hours,248.55,312.85,234.39,9.42,factory,normal_operation,2,clear
+factory_002_pattern_0006,1772872922.5392597,factory_002,Emergency or surge demand pattern for factory during afternoon period,477.35,687.44,439.2,1.51,factory,emergency_surge,2,clear
+factory_002_pattern_0007,1772892553.201587,factory_002,Reduced load during maintenance for factory during evening peak,48.0,59.92,43.26,4.08,factory,maintenance_mode,2,cloudy
+factory_002_pattern_0008,1772919757.455818,factory_002,Reduced load during maintenance for factory during night hours,81.55,110.44,78.76,2.63,factory,maintenance_mode,2,hot
+factory_002_pattern_0009,1772936524.2334511,factory_002,Reduced load during maintenance for factory during morning hours,38.03,54.12,34.51,7.79,factory,maintenance_mode,2,cloudy
+factory_002_pattern_0010,1772971866.7046578,factory_002,Reduced load during maintenance for factory during evening peak,74.68,106.96,61.04,3.61,factory,maintenance_mode,2,mild
+factory_002_pattern_0011,1772989736.7276137,factory_002,Normal operational pattern for factory during night hours,199.89,222.17,193.93,8.88,factory,normal_operation,2,clear
+factory_002_pattern_0012,1773026186.9908078,factory_002,Reduced load during maintenance for factory during morning hours,76.48,105.58,65.41,4.04,factory,maintenance_mode,2,clear
+factory_002_pattern_0013,1773054483.8983002,factory_002,Normal operational pattern for factory during afternoon period,209.1,293.42,196.16,9.76,factory,normal_operation,2,hot
+factory_002_pattern_0014,1773097606.3974483,factory_002,Reduced load during maintenance for factory during night hours,34.97,48.14,30.12,2.56,factory,maintenance_mode,2,hot
+factory_002_pattern_0015,1773114579.4319787,factory_002,Normal operational pattern for factory during morning hours,230.72,284.32,217.01,7.4,factory,normal_operation,2,clear
+factory_002_pattern_0016,1773146201.6281047,factory_002,Normal operational pattern for factory during evening peak,178.09,234.07,169.62,5.54,factory,normal_operation,2,clear
+factory_002_pattern_0017,1773170674.5022185,factory_002,Normal operational pattern for factory during night hours,250.1,327.6,214.24,9.8,factory,normal_operation,2,clear
+factory_002_pattern_0018,1773210188.431734,factory_002,Normal operational pattern for factory during morning hours,169.23,222.32,144.67,5.44,factory,normal_operation,2,stormy
+factory_002_pattern_0019,1773238528.6711738,factory_002,Emergency or surge demand pattern for factory during evening peak,497.51,644.95,484.85,1.63,factory,emergency_surge,2,hot
+factory_002_pattern_0020,1773252116.1035533,factory_002,Normal operational pattern for factory during night hours,172.36,254.48,154.36,5.47,factory,normal_operation,2,mild
+factory_002_pattern_0021,1773278674.691033,factory_002,Normal operational pattern for factory during morning hours,172.55,200.1,157.46,9.04,factory,normal_operation,2,cloudy
+factory_003_pattern_0000,1772687205.732563,factory_003,Reduced load during maintenance for factory during morning hours,75.43,89.79,68.23,5.64,factory,maintenance_mode,2,cloudy
+factory_003_pattern_0001,1772714880.4784803,factory_003,Optimized high-efficiency operation for factory during evening peak,266.55,359.42,245.74,15.9,factory,peak_efficiency,2,hot
+factory_003_pattern_0002,1772785861.2403812,factory_003,Normal operational pattern for factory during afternoon period,238.04,276.8,198.71,5.69,factory,normal_operation,2,clear
+factory_003_pattern_0003,1772808172.480111,factory_003,Normal operational pattern for factory during evening peak,205.01,244.5,193.0,8.75,factory,normal_operation,2,hot
+factory_003_pattern_0004,1772847195.0372431,factory_003,Emergency or surge demand pattern for factory during morning hours,511.76,690.89,477.09,5.62,factory,emergency_surge,2,mild
+factory_003_pattern_0005,1772874582.1870167,factory_003,Normal operational pattern for factory during afternoon period,260.23,372.3,211.9,9.18,factory,normal_operation,2,clear
+factory_003_pattern_0006,1772913309.9758897,factory_003,Reduced load during maintenance for factory during night hours,41.74,47.99,39.14,5.42,factory,maintenance_mode,2,hot
+factory_003_pattern_0007,1772946482.5687883,factory_003,Normal operational pattern for factory during morning hours,186.15,207.73,165.0,7.95,factory,normal_operation,2,cloudy
+factory_003_pattern_0008,1772980058.5066757,factory_003,Normal operational pattern for factory during evening peak,253.75,337.51,251.25,11.7,factory,normal_operation,2,stormy
+factory_003_pattern_0009,1773032432.2943811,factory_003,Normal operational pattern for factory during morning hours,246.62,317.7,229.43,4.32,factory,normal_operation,2,mild
+factory_003_pattern_0010,1773052077.7298229,factory_003,Normal operational pattern for factory during afternoon period,222.95,253.38,193.88,9.08,factory,normal_operation,2,cloudy
+factory_003_pattern_0011,1773095003.2119632,factory_003,Optimized high-efficiency operation for factory during night hours,292.61,355.6,289.4,9.3,factory,peak_efficiency,2,mild
+factory_003_pattern_0012,1773137207.361125,factory_003,Normal operational pattern for factory during afternoon period,207.88,309.34,183.11,6.52,factory,normal_operation,2,cloudy
+factory_003_pattern_0013,1773174915.7573576,factory_003,Emergency or surge demand pattern for factory during night hours,427.97,502.88,373.35,3.71,factory,emergency_surge,2,mild
+factory_003_pattern_0014,1773197962.592207,factory_003,Reduced load during maintenance for factory during morning hours,59.23,87.12,52.57,3.22,factory,maintenance_mode,2,hot
+factory_003_pattern_0015,1773212889.4188056,factory_003,Optimized high-efficiency operation for factory during afternoon period,262.12,304.94,238.57,12.09,factory,peak_efficiency,2,hot
+factory_003_pattern_0016,1773259383.2347567,factory_003,Optimized high-efficiency operation for factory during night hours,277.03,317.74,267.73,15.13,factory,peak_efficiency,2,cloudy
+residential_001_pattern_0000,1772687205.732563,residential_001,Normal operational pattern for residential during morning hours,102.07,122.23,92.91,10.68,residential,normal_operation,3,cloudy
+residential_001_pattern_0001,1772739061.3208847,residential_001,Normal operational pattern for residential during night hours,98.09,118.74,93.97,11.03,residential,normal_operation,3,cloudy
+residential_001_pattern_0002,1772792357.4467933,residential_001,Normal operational pattern for residential during afternoon period,78.18,95.34,71.72,10.56,residential,normal_operation,3,stormy
+residential_001_pattern_0003,1772838358.7399888,residential_001,Normal operational pattern for residential during night hours,80.32,106.08,72.98,8.31,residential,normal_operation,3,cloudy
+residential_001_pattern_0004,1772874124.2552395,residential_001,Normal operational pattern for residential during afternoon period,88.08,105.12,84.13,9.58,residential,normal_operation,3,clear
+residential_001_pattern_0005,1772919795.4948647,residential_001,Reduced load during maintenance for residential during night hours,18.48,25.23,17.82,6.87,residential,maintenance_mode,3,stormy
+residential_001_pattern_0006,1772952563.0681453,residential_001,Normal operational pattern for residential during afternoon period,88.71,128.44,86.48,8.02,residential,normal_operation,3,cloudy
+residential_001_pattern_0007,1772989856.036963,residential_001,Normal operational pattern for residential during night hours,82.54,112.41,68.58,9.78,residential,normal_operation,3,cloudy
+residential_001_pattern_0008,1773039074.3849423,residential_001,Normal operational pattern for residential during afternoon period,90.75,130.75,88.07,9.54,residential,normal_operation,3,mild
+residential_001_pattern_0009,1773080012.3957903,residential_001,Normal operational pattern for residential during night hours,94.51,136.93,76.28,9.75,residential,normal_operation,3,clear
+residential_001_pattern_0010,1773124864.0864491,residential_001,Optimized high-efficiency operation for residential during afternoon period,113.36,144.38,92.92,15.97,residential,peak_efficiency,3,hot
+residential_001_pattern_0011,1773195165.9180064,residential_001,Normal operational pattern for residential during morning hours,99.44,111.21,95.38,9.55,residential,normal_operation,3,clear
+residential_001_pattern_0012,1773236076.1492262,residential_001,Normal operational pattern for residential during evening peak,87.88,124.53,73.29,8.25,residential,normal_operation,3,clear
+residential_001_pattern_0013,1773278546.318132,residential_001,Emergency or surge demand pattern for residential during morning hours,206.59,239.07,184.32,2.2,residential,emergency_surge,3,clear
+residential_001_pattern_0014,1773291498.370908,residential_001,Normal operational pattern for residential during morning hours,99.36,136.23,82.63,10.44,residential,normal_operation,3,cloudy
+residential_002_pattern_0000,1772687205.732563,residential_002,Emergency or surge demand pattern for residential during morning hours,159.49,229.36,133.94,3.12,residential,emergency_surge,3,cloudy
+residential_002_pattern_0001,1772706331.7150247,residential_002,Normal operational pattern for residential during afternoon period,93.86,140.51,80.63,8.58,residential,normal_operation,3,stormy
+residential_002_pattern_0002,1772747296.784245,residential_002,Normal operational pattern for residential during night hours,97.9,136.86,79.28,8.53,residential,normal_operation,3,hot
+residential_002_pattern_0003,1772786054.3037436,residential_002,Optimized high-efficiency operation for residential during afternoon period,122.08,163.94,106.27,8.86,residential,peak_efficiency,3,hot
+residential_002_pattern_0004,1772827580.5218515,residential_002,Emergency or surge demand pattern for residential during night hours,196.77,282.43,182.14,4.6,residential,emergency_surge,3,mild
+residential_002_pattern_0005,1772854101.1243038,residential_002,Normal operational pattern for residential during morning hours,94.03,130.98,76.92,7.53,residential,normal_operation,3,clear
+residential_002_pattern_0006,1772892415.0910788,residential_002,Normal operational pattern for residential during evening peak,92.57,137.79,83.88,5.06,residential,normal_operation,3,mild
+residential_002_pattern_0007,1772922885.2482605,residential_002,Normal operational pattern for residential during night hours,90.47,128.7,85.88,10.6,residential,normal_operation,3,cloudy
+residential_002_pattern_0008,1772964287.4531755,residential_002,Optimized high-efficiency operation for residential during afternoon period,126.67,182.91,119.68,7.41,residential,peak_efficiency,3,stormy
+residential_002_pattern_0009,1773004942.3045316,residential_002,Reduced load during maintenance for residential during night hours,30.73,33.97,27.88,4.19,residential,maintenance_mode,3,cloudy
+residential_002_pattern_0010,1773030320.6832104,residential_002,Emergency or surge demand pattern for residential during morning hours,211.64,312.41,173.9,3.92,residential,emergency_surge,3,clear
+residential_002_pattern_0011,1773046558.0754457,residential_002,Optimized high-efficiency operation for residential during afternoon period,125.27,148.88,101.8,11.61,residential,peak_efficiency,3,mild
+residential_002_pattern_0012,1773101627.025451,residential_002,Normal operational pattern for residential during night hours,78.0,115.32,67.15,7.27,residential,normal_operation,3,cloudy
+residential_002_pattern_0013,1773130810.5652804,residential_002,Optimized high-efficiency operation for residential during afternoon period,112.65,154.12,106.86,7.36,residential,peak_efficiency,3,mild
+residential_002_pattern_0014,1773164375.4681268,residential_002,Reduced load during maintenance for residential during night hours,20.46,23.31,18.37,2.93,residential,maintenance_mode,3,cloudy
+residential_002_pattern_0015,1773188702.3340387,residential_002,Normal operational pattern for residential during night hours,89.07,131.84,86.49,6.96,residential,normal_operation,3,clear
+residential_002_pattern_0016,1773224213.1681955,residential_002,Normal operational pattern for residential during afternoon period,85.98,108.27,72.05,11.82,residential,normal_operation,3,clear
+residential_002_pattern_0017,1773279260.2512183,residential_002,Normal operational pattern for residential during morning hours,96.3,128.93,77.45,9.3,residential,normal_operation,3,mild
+residential_003_pattern_0000,1772687205.732563,residential_003,Normal operational pattern for residential during morning hours,65.05,76.95,54.85,4.55,residential,normal_operation,3,mild
+residential_003_pattern_0001,1772709521.5553377,residential_003,Normal operational pattern for residential during afternoon period,47.12,68.01,39.06,11.2,residential,normal_operation,3,clear
+residential_003_pattern_0002,1772754815.0920424,residential_003,Normal operational pattern for residential during night hours,47.66,52.71,45.66,9.29,residential,normal_operation,3,clear
+residential_003_pattern_0003,1772794133.07257,residential_003,Normal operational pattern for residential during afternoon period,64.5,84.52,61.22,4.42,residential,normal_operation,3,cloudy
+residential_003_pattern_0004,1772821645.1789799,residential_003,Normal operational pattern for residential during night hours,58.9,87.07,47.63,4.87,residential,normal_operation,3,mild
+residential_003_pattern_0005,1772851909.8939059,residential_003,Normal operational pattern for residential during morning hours,69.73,78.4,62.47,7.66,residential,normal_operation,3,cloudy
+residential_003_pattern_0006,1772889946.3469927,residential_003,Normal operational pattern for residential during evening peak,48.78,55.24,44.96,11.28,residential,normal_operation,3,clear
+residential_003_pattern_0007,1772935810.9324656,residential_003,Emergency or surge demand pattern for residential during morning hours,107.35,160.79,97.27,3.74,residential,emergency_surge,3,cloudy
+residential_003_pattern_0008,1772958709.7258518,residential_003,Normal operational pattern for residential during afternoon period,67.11,91.3,64.01,9.61,residential,normal_operation,3,hot
+residential_003_pattern_0009,1772997830.2637417,residential_003,Normal operational pattern for residential during night hours,55.03,70.51,48.6,5.83,residential,normal_operation,3,clear
+residential_003_pattern_0010,1773025988.1051621,residential_003,Emergency or surge demand pattern for residential during morning hours,97.2,142.8,79.06,2.87,residential,emergency_surge,3,mild
+residential_003_pattern_0011,1773039300.2228653,residential_003,Normal operational pattern for residential during afternoon period,66.15,87.49,60.68,9.91,residential,normal_operation,3,hot
+residential_003_pattern_0012,1773080931.0869875,residential_003,Normal operational pattern for residential during night hours,62.7,87.79,61.05,6.83,residential,normal_operation,3,hot
+residential_003_pattern_0013,1773119516.53436,residential_003,Emergency or surge demand pattern for residential during morning hours,122.21,144.83,113.82,2.76,residential,emergency_surge,3,clear
+residential_003_pattern_0014,1773132609.7173147,residential_003,Reduced load during maintenance for residential during afternoon period,19.34,25.71,18.59,4.21,residential,maintenance_mode,3,mild
+residential_003_pattern_0015,1773161828.323195,residential_003,Reduced load during maintenance for residential during night hours,17.22,19.12,16.98,5.68,residential,maintenance_mode,3,mild
+residential_003_pattern_0016,1773187451.3473916,residential_003,Normal operational pattern for residential during night hours,54.32,67.14,43.52,9.62,residential,normal_operation,3,mild
+residential_003_pattern_0017,1773231024.717844,residential_003,Normal operational pattern for residential during evening peak,61.95,68.9,58.8,5.13,residential,normal_operation,3,clear
+residential_003_pattern_0018,1773256600.597305,residential_003,Normal operational pattern for residential during night hours,64.03,90.33,58.49,6.96,residential,normal_operation,3,clear
+residential_003_pattern_0019,1773284120.9975812,residential_003,Normal operational pattern for residential during morning hours,62.91,76.05,58.65,8.94,residential,normal_operation,3,cloudy
